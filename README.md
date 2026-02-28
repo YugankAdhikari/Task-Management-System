@@ -193,6 +193,18 @@ Make sure the backend server is running before starting the frontend.
 
 ## Screenshots
 
+### Login Page
+![Login Page](assets/IMG-20260228-WA0003.jpg)
+
+### Dashboard
+![Dashboard](assets/IMG-20260228-WA0004.jpg)
+
+### Task View
+![Task View](assets/IMG-20260228-WA0006.jpg)
+
+### Admin Panel
+![Admin Panel](assets/IMG-20260228-WA0007.jpg)
+
 
 
 ---
