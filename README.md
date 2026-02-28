@@ -1,88 +1,95 @@
 # Task Management System
 
-A full-stack role-based task management application built using Next.js and Express.  
-The system implements secure JWT authentication, role-based access control (RBAC), and an administrative dashboard for user management.
+A full-stack role-based task management application built using Next.js (App Router) and Express.
+The system implements secure JWT authentication, role-based access control (RBAC), task isolation, and an administrative dashboard for user management.
 
-This project demonstrates backend API design, authentication security practices, database schema management, and responsive frontend integration.
+This project demonstrates backend API design, authentication security practices, database schema management, role enforcement, production deployment handling, and real-world debugging across environments.
 
 ---
 
 ## Live Demo
 
-**Frontend**  
-https://your-vercel-app.vercel.app  
+Frontend
+https://task-management-system-jy7j.vercel.app/register
 
-**Backend API**  
-https://your-render-backend.onrender.com  
+Backend API
+https://task-management-system-one-lake.vercel.app/
+
+Note:
+The project is hosted on Vercel free tier. Initial API requests may be slightly slow due to cold starts.
 
 ---
 
 ## Demo Credentials
 
-### Admin Account
-- Email: admin@test.com  
-- Password: 123456  
+Admin Account
+- Email: admin@test.com
+- Password: 123456
 
-### User Account
-- Email: user@test.com  
-- Password: 123456  
+User Account
+- Email: user@test.com
+- Password: 123456
 
 ---
 
 ## Technology Stack
 
-### Frontend
+Frontend
 - Next.js (App Router)
 - React
 - Tailwind CSS
 - Axios
+- Client-side JWT handling
 
-### Backend
+Backend
 - Node.js
 - Express
 - JWT Authentication
 - Role-Based Access Control (RBAC)
+- Centralized Error Middleware
 - Swagger API Documentation
 
-### Database
+Database
 - Neon (Serverless PostgreSQL)
 - Prisma ORM
 
-### Deployment
-- Vercel (Frontend)
-- Render (Backend)
+Deployment
+- Vercel (Frontend and Backend)
 - Neon (Database)
 
 ---
 
 ## Core Features
 
-### Authentication and Authorization
+Authentication and Authorization
 - User registration with hashed passwords
 - Secure login with JWT token issuance
+- /api/v1/auth/me endpoint for session validation
 - Protected routes requiring valid authentication
-- `/auth/me` endpoint for session validation
 - Role-based access enforcement (Admin / User)
+- Backend-enforced authorization
 
-### Task Management
+Task Management
 - Create tasks
 - Update tasks
 - Delete tasks
-- Mark tasks as complete / incomplete
+- Mark tasks as complete or incomplete
 - User-specific task isolation
+- Ownership validation enforced server-side
 
-### Administrative Dashboard
+Administrative Dashboard
 - Admin-only route protection
 - View all registered users
 - Role display and verification
-- Backend-enforced authorization
+- Backend-enforced access control
 
-### API Design
+API Design
 - RESTful endpoint structure
-- API versioning (`/api/v1`)
+- API versioning (/api/v1)
 - Proper HTTP status codes
 - Centralized error handling
-- Request validation
+- Middleware-based authentication
+- Structured responses
 - Swagger documentation
 
 ---
@@ -90,10 +97,9 @@ https://your-render-backend.onrender.com
 ## API Documentation
 
 Swagger documentation is available at:
-/api-docs
+https://task-management-system-one-lake.vercel.app/api-docs
 
-
-Includes:
+Includes
 - Authentication endpoints
 - Task CRUD endpoints
 - Admin user endpoints
@@ -103,39 +109,41 @@ Includes:
 
 ## Architecture Overview
 
-### Authentication Flow
+Authentication Flow
 
 1. User submits login credentials.
 2. Server validates credentials.
 3. JWT is generated and returned.
-4. Token is stored in `localStorage`.
-5. Client sends token in the `Authorization: Bearer` header.
+4. Token is stored in localStorage.
+5. Client sends token in the Authorization: Bearer header.
 6. Backend verifies token before granting access.
+7. Role middleware enforces admin restrictions.
 
-### Role-Based Access Control (RBAC)
+Role-Based Access Control (RBAC)
 
 - Each user record includes a role field.
 - Backend middleware validates role before allowing access.
 - Admin routes are enforced server-side.
-- Frontend conditionally renders admin interface based on verified role.
+- Frontend conditionally renders admin interface only after verified role response.
+- Security does not rely solely on frontend rendering.
 
 ---
 
 ## Database Schema
 
-### User
-- id  
-- name  
-- email  
-- password (hashed)  
-- role  
+User
+- id
+- name
+- email (unique)
+- password (hashed)
+- role
 
-### Task
-- id  
-- title  
-- description  
-- completed  
-- userId (foreign key)  
+Task
+- id
+- title
+- description
+- completed
+- userId (foreign key)
 
 Prisma manages schema migrations and database interaction.
 
@@ -143,38 +151,35 @@ Prisma manages schema migrations and database interaction.
 
 ## Local Setup
 
-### Backend
--cd backend
--npm install
--Create a `.env` file:
- DATABASE_URL=your_neon_database_url
- JWT_SECRET=your_secret_key
- PORT=5000
--run:
- npm start
+Backend
+- cd backend
+- npm install
+- Create a .env file:
+  DATABASE_URL=your_neon_database_url
+  JWT_SECRET=your_secret_key
+  PORT=5000
+- Run:
+  npm start
 
----
-
-### Frontend
--cd frontend
--npm install
--Create a `.env.local` file:
- NEXT_PUBLIC_API_URL=http://localhost:5000/api/v1
--run:
- npm run dev
+Frontend
+- cd frontend
+- npm install
+- Create a .env.local file:
+  NEXT_PUBLIC_API_URL=http://localhost:5000/api/v1
+- Run:
+  npm run dev
 
 ---
 
 ## Security Considerations
 
-- Passwords are hashed before storage.
-- JWT secret stored securely in environment variables.
-- Role validation enforced server-side.
-- Sensitive configuration excluded from version control.
+- Passwords are hashed before storage
+- JWT secret stored securely in environment variables
+- Role validation enforced server-side
+- Sensitive configuration excluded from version control
+- Proper HTTP status handling and centralized error middleware
 
 ---
-##screenshots
-
 
 ## Author
 
