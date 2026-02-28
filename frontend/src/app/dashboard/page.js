@@ -27,7 +27,7 @@ export default function Dashboard() {
 const fetchUser = async (token) => {
   try {
     const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/me`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/me`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }
@@ -42,7 +42,7 @@ const fetchUser = async (token) => {
   const fetchTasks = async (token) => {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/tasks`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/tasks`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -59,7 +59,7 @@ const fetchUser = async (token) => {
 
     try {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/tasks`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/tasks`,
         { title, description },
         {
           headers: { Authorization: `Bearer ${token}` }
@@ -189,7 +189,7 @@ function TaskItem({ task, index, refreshTasks }) {
   const saveEdit = async () => {
     try {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_URL}/tasks/${task.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/tasks/${task.id}`,
         {
           title: editTitle,
           description: editDescription
@@ -208,7 +208,7 @@ function TaskItem({ task, index, refreshTasks }) {
   const toggleComplete = async () => {
     try {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_URL}/tasks/${task.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/tasks/${task.id}`,
         { completed: !task.completed },
         {
           headers: { Authorization: `Bearer ${token}` }
@@ -223,7 +223,7 @@ function TaskItem({ task, index, refreshTasks }) {
   const deleteTask = async () => {
     try {
       await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL}/tasks/${task.id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/tasks/${task.id}`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
