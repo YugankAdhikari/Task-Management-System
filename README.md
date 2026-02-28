@@ -141,28 +141,6 @@ Prisma manages schema migrations and database interaction.
 
 ---
 
-## Project Structure
-project-root/
-│
-├── frontend/
-│ ├── app/
-│ ├── components/
-│ └── ...
-│
-├── backend/
-│ ├── src/
-│ │ ├── controllers/
-│ │ ├── routes/
-│ │ ├── middlewares/
-│ │ └── utils/
-│ ├── prisma/
-│ └── server.js
-│
-└── README.md
-
-
----
-
 ## Local Setup
 
 ### Backend
