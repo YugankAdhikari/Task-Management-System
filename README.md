@@ -194,7 +194,7 @@ Make sure the backend server is running before starting the frontend.
 ## Screenshots
 
 ### Login Page
-![Login Page](assets/IMG-20260228-WA0003.jpg)
+![Login Page](assets/IMG-20260228-WA0007.jpg)
 
 ### Dashboard
 ![Dashboard](assets/IMG-20260228-WA0004.jpg)
@@ -203,7 +203,7 @@ Make sure the backend server is running before starting the frontend.
 ![admin panel](assets/IMG-20260228-WA0006.jpg)
 
 ### registration page
-![registration page](assets/IMG-20260228-WA0007.jpg)
+![registration page](assets/IMG-20260228-WA0003.jpg)
 
 
 
