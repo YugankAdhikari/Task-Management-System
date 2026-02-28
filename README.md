@@ -199,11 +199,11 @@ Make sure the backend server is running before starting the frontend.
 ### Dashboard
 ![Dashboard](assets/IMG-20260228-WA0004.jpg)
 
-### Task View
-![Task View](assets/IMG-20260228-WA0006.jpg)
+### admin panel
+![admin panel](assets/IMG-20260228-WA0006.jpg)
 
-### Admin Panel
-![Admin Panel](assets/IMG-20260228-WA0007.jpg)
+### registration page
+![registration page](assets/IMG-20260228-WA0007.jpg)
 
 
 
