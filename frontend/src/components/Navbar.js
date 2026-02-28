@@ -14,11 +14,13 @@ export default function Navbar() {
     const token = localStorage.getItem("token")
     if (!token) return
 
-    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/me`, {
       headers: { Authorization: `Bearer ${token}` }
-    }).then(res => {
+    })
+    .then(res => {
       setUser(res.data)
-    }).catch(() => {
+    })
+    .catch(() => {
       localStorage.removeItem("token")
       setUser(null)
       router.push("/login")
@@ -38,34 +40,23 @@ export default function Navbar() {
   }
 
   return (
-    <div className="sticky top-4 z-50 px-3">
-      <nav className="backdrop-blur-xl bg-white/5 border border-pink-500/20 rounded-2xl shadow-[0_0_40px_rgba(236,72,153,0.15)]">
+    <div className="sticky top-0 z-50 w-full px-4 py-3 bg-black/40 backdrop-blur-xl border-b border-pink-500/20">
 
-        {/* Top Row */}
-        <div className="flex items-center justify-between px-4 py-3">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
 
-          {/* Branding */}
-          <div className="text-xs sm:text-sm text-gray-300 leading-tight">
-            Made by <span className="text-pink-400 font-semibold">Yugank</span>
-          </div>
+        {/* Branding */}
+        <div className="text-sm text-gray-300">
+          Made by <span className="text-pink-400 font-semibold">Yugank</span>
+        </div>
 
-          {/* Hamburger */}
-          {user && (
-            <button
-              className="md:hidden text-white text-xl"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              ☰
-            </button>
-          )}
-
-          {/* Desktop Menu */}
-          {user && (
-            <div className="hidden md:flex items-center gap-8">
+        {user && (
+          <>
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center gap-6">
 
               <button
                 onClick={() => navigate("/dashboard")}
-                className={`${
+                className={`transition ${
                   pathname === "/dashboard"
                     ? "text-pink-400"
                     : "text-gray-300 hover:text-pink-400"
@@ -77,7 +68,7 @@ export default function Navbar() {
               {user.role === "ADMIN" && (
                 <button
                   onClick={() => navigate("/admin")}
-                  className={`${
+                  className={`transition ${
                     pathname === "/admin"
                       ? "text-pink-400"
                       : "text-gray-300 hover:text-pink-400"
@@ -93,51 +84,59 @@ export default function Navbar() {
 
               <button
                 onClick={logout}
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-pink-600 to-pink-500 text-white"
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-pink-600 to-pink-500 text-white hover:opacity-90 transition"
               >
                 Logout
               </button>
 
             </div>
-          )}
-        </div>
 
-        {/* Mobile Dropdown */}
-        {menuOpen && user && (
-          <div className="md:hidden border-t border-pink-500/20 px-4 pb-4 space-y-3">
-
+            {/* Mobile Hamburger */}
             <button
-              onClick={() => navigate("/dashboard")}
+              className="md:hidden text-white text-2xl"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              ☰
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Mobile Dropdown */}
+      {menuOpen && user && (
+        <div className="md:hidden mt-4 border-t border-pink-500/20 pt-4 space-y-4">
+
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="block w-full text-left text-gray-300 hover:text-pink-400"
+          >
+            Dashboard
+          </button>
+
+          {user.role === "ADMIN" && (
+            <button
+              onClick={() => navigate("/admin")}
               className="block w-full text-left text-gray-300 hover:text-pink-400"
             >
-              Dashboard
+              Admin
             </button>
+          )}
 
-            {user.role === "ADMIN" && (
-              <button
-                onClick={() => navigate("/admin")}
-                className="block w-full text-left text-gray-300 hover:text-pink-400"
-              >
-                Admin
-              </button>
-            )}
-
-            <div className="pt-3 border-t border-pink-500/20">
-              <div className="text-sm text-gray-400 mb-2">
-                {user.name} ({user.role})
-              </div>
-
-              <button
-                onClick={logout}
-                className="w-full px-4 py-2 rounded-xl bg-gradient-to-r from-pink-600 to-pink-500 text-white"
-              >
-                Logout
-              </button>
+          <div className="pt-2 border-t border-pink-500/20">
+            <div className="text-sm text-gray-400 mb-2">
+              {user.name} ({user.role})
             </div>
 
+            <button
+              onClick={logout}
+              className="w-full px-4 py-2 rounded-xl bg-gradient-to-r from-pink-600 to-pink-500 text-white"
+            >
+              Logout
+            </button>
           </div>
-        )}
-      </nav>
+
+        </div>
+      )}
     </div>
   )
 }
