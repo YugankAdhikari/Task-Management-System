@@ -1,40 +1,181 @@
-**Task Management System**
-A full-stack role-based task management application built with Next.js (App Router) and Express.js.
-The system implements secure JWT authentication, Role-Based Access Control (RBAC), and an
-administrative dashboard for user management.
-**Live Deployment**
-Frontend:
-https://task-management-system-jy7j.vercel.app/register
-Backend API:
-https://task-management-system-one-lake.vercel.app/
-Note: Hosted on Vercel free tier. Initial API requests may be slow due to cold starts.
-**Demo Credentials**
-• Admin Account - Email: admin@test.com | Password: 123456
-• User Account - Email: user@test.com | Password: 123456
-**Technology Stack**
-• Frontend: Next.js (App Router), React, Tailwind CSS, Axios
-• Backend: Node.js, Express.js, JWT Authentication, RBAC, Swagger
-• Database: Neon PostgreSQL, Prisma ORM
-• Deployment: Vercel (Frontend & Backend), Neon (Database)
-**Core Features**
-• User registration with hashed passwords
-• Secure login with JWT issuance
-• Session validation endpoint (/api/v1/auth/me)
-• Protected routes with Bearer authentication
-• Admin-only dashboard access
-• Task creation, update, deletion, and completion
-• User-specific task isolation
-• RESTful API design with versioning (/api/v1)
-**Security Considerations**
-• Passwords hashed before storage
-• JWT secret stored in environment variables
-• Server-side role validation
-• Sensitive configuration excluded from version control
-• Proper HTTP status handling and centralized error middleware
-**Screenshots**
-<img width="1919" height="1079" alt="Screenshot 2026-02-28 151408" src="https://github.com/user-attachments/assets/0c95200c-ca6e-41fe-8dc4-aafb1b7555d5" />
-<img width="1919" height="1079" alt="Screenshot 2026-02-28 151338" src="https://github.com/user-attachments/assets/8bc690eb-94e5-432a-bdb0-b6c63394b47a" />
-<img width="1918" height="1079" alt="Screenshot 2026-02-28 151347" src="https://github.com/user-attachments/assets/8cd0ba6d-ffd4-4cd9-b52f-0e56f14eb196" />
-<img width="1919" height="1079" alt="Screenshot 2026-02-28 151400" src="https://github.com/user-attachments/assets/65bd5bb8-29b0-45b8-99c7-c2b2974864a2" />
-**Author**
+# Task Management System
+
+A full-stack role-based task management application built using Next.js and Express.  
+The system implements secure JWT authentication, role-based access control (RBAC), and an administrative dashboard for user management.
+
+This project demonstrates backend API design, authentication security practices, database schema management, and responsive frontend integration.
+
+---
+
+## Live Demo
+
+**Frontend**  
+https://your-vercel-app.vercel.app  
+
+**Backend API**  
+https://your-render-backend.onrender.com  
+
+---
+
+## Demo Credentials
+
+### Admin Account
+- Email: admin@test.com  
+- Password: 123456  
+
+### User Account
+- Email: user@test.com  
+- Password: 123456  
+
+---
+
+## Technology Stack
+
+### Frontend
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- Axios
+
+### Backend
+- Node.js
+- Express
+- JWT Authentication
+- Role-Based Access Control (RBAC)
+- Swagger API Documentation
+
+### Database
+- Neon (Serverless PostgreSQL)
+- Prisma ORM
+
+### Deployment
+- Vercel (Frontend)
+- Render (Backend)
+- Neon (Database)
+
+---
+
+## Core Features
+
+### Authentication and Authorization
+- User registration with hashed passwords
+- Secure login with JWT token issuance
+- Protected routes requiring valid authentication
+- `/auth/me` endpoint for session validation
+- Role-based access enforcement (Admin / User)
+
+### Task Management
+- Create tasks
+- Update tasks
+- Delete tasks
+- Mark tasks as complete / incomplete
+- User-specific task isolation
+
+### Administrative Dashboard
+- Admin-only route protection
+- View all registered users
+- Role display and verification
+- Backend-enforced authorization
+
+### API Design
+- RESTful endpoint structure
+- API versioning (`/api/v1`)
+- Proper HTTP status codes
+- Centralized error handling
+- Request validation
+- Swagger documentation
+
+---
+
+## API Documentation
+
+Swagger documentation is available at:
+/api-docs
+
+
+Includes:
+- Authentication endpoints
+- Task CRUD endpoints
+- Admin user endpoints
+- Request and response schemas
+
+---
+
+## Architecture Overview
+
+### Authentication Flow
+
+1. User submits login credentials.
+2. Server validates credentials.
+3. JWT is generated and returned.
+4. Token is stored in `localStorage`.
+5. Client sends token in the `Authorization: Bearer` header.
+6. Backend verifies token before granting access.
+
+### Role-Based Access Control (RBAC)
+
+- Each user record includes a role field.
+- Backend middleware validates role before allowing access.
+- Admin routes are enforced server-side.
+- Frontend conditionally renders admin interface based on verified role.
+
+---
+
+## Database Schema
+
+### User
+- id  
+- name  
+- email  
+- password (hashed)  
+- role  
+
+### Task
+- id  
+- title  
+- description  
+- completed  
+- userId (foreign key)  
+
+Prisma manages schema migrations and database interaction.
+
+---
+
+## Local Setup
+
+### Backend
+-cd backend
+-npm install
+-Create a `.env` file:
+ DATABASE_URL=your_neon_database_url
+ JWT_SECRET=your_secret_key
+ PORT=5000
+-run:
+ npm start
+
+---
+
+### Frontend
+-cd frontend
+-npm install
+-Create a `.env.local` file:
+ NEXT_PUBLIC_API_URL=http://localhost:5000/api/v1
+-run:
+ npm run dev
+
+---
+
+## Security Considerations
+
+- Passwords are hashed before storage.
+- JWT secret stored securely in environment variables.
+- Role validation enforced server-side.
+- Sensitive configuration excluded from version control.
+
+---
+##screenshots
+
+
+## Author
+
 Yugank Adhikari
