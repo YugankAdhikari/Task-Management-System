@@ -193,13 +193,6 @@ Make sure the backend server is running before starting the frontend.
 
 ## Screenshots
 
-![IMG-20260228-WA0003.jpg](https://github.com/user-attachments/assets/a38d8e0b-53f5-438a-8555-e7f98f4d7f97)
-
-![IMG-20260228-WA0006.jpg](https://github.com/user-attachments/assets/23785e56-e948-431b-bf4b-d220886b924e)
-
-![IMG-20260228-WA0007.jpg](https://github.com/user-attachments/assets/d7a9ba18-74b8-456e-84ee-ee8bd746b47f)
-
-![IMG-20260228-WA0004.jpg](https://github.com/user-attachments/assets/92f70784-c2b9-48e6-b6b2-3e290598f301)
 
 
 ---
