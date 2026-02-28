@@ -15,8 +15,11 @@ https://task-management-system-jy7j.vercel.app/register
 Backend API
 https://task-management-system-one-lake.vercel.app/
 
-Note:
-The project is hosted on Vercel free tier. Initial API requests may be slightly slow due to cold starts.
+Important Notice
+This project is hosted on the Vercel free plan.
+The backend may go into sleep mode when inactive.
+The first request after inactivity may be slow due to cold start.
+Subsequent requests will be fast.
 
 ---
 
@@ -149,25 +152,32 @@ Prisma manages schema migrations and database interaction.
 
 ---
 
-## Local Setup
+## Local Installation Guide
 
-Backend
-- cd backend
-- npm install
-- Create a .env file:
-  DATABASE_URL=your_neon_database_url
-  JWT_SECRET=your_secret_key
-  PORT=5000
-- Run:
-  npm start
+Backend Setup
+1. cd backend
+2. npm install
+3. Create a .env file inside the backend folder with:
+   DATABASE_URL=your_neon_database_url
+   JWT_SECRET=your_secret_key
+   PORT=5000
+4. Run:
+   npm start
+5. Backend runs at:
+   http://localhost:5000
 
-Frontend
-- cd frontend
-- npm install
-- Create a .env.local file:
-  NEXT_PUBLIC_API_URL=http://localhost:5000/api/v1
-- Run:
-  npm run dev
+Frontend Setup
+1. cd frontend
+2. npm install
+3. Create a .env.local file with:
+   NEXT_PUBLIC_API_URL=http://localhost:5000/api/v1
+4. Run:
+   npm run dev
+5. Frontend runs at:
+   http://localhost:3000
+
+Important
+Make sure the backend server is running before starting the frontend.
 
 ---
 
@@ -178,6 +188,12 @@ Frontend
 - Role validation enforced server-side
 - Sensitive configuration excluded from version control
 - Proper HTTP status handling and centralized error middleware
+
+---
+
+## Screenshots
+
+(Add your screenshots below)
 
 ---
 
